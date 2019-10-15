@@ -1,7 +1,8 @@
 console.log("Chrome Extension ready to go");
-// alert("I work")
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    console.log(request, sender, sendResponse);
-    // console.log("I work")
+    var test = document.getElementsByClassName("title");
+    console.log(test[0])
+    var h = document.getElementsByClassName("title");
+    h[0].insertAdjacentHTML("afterbegin", "<button>Add to Spotify</button>");
 });
