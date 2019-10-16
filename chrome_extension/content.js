@@ -23,5 +23,5 @@ window.addEventListener('load', function () {
 
     video_title.insertAdjacentHTML("afterbegin", "<button class=\'spotify\' >Add to Spotify</button>");
     // contentScript.message()
-    chrome.runtime.sendMessage({from: 'contentScript'})
+    chrome.runtime.sendMessage({from: 'contentScript'});
 })

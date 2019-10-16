@@ -1,2 +1,3 @@
-misc_code.js
+chrome_extension/misc_code.js
 .vscode
+flask/keys.py

@@ -7,8 +7,8 @@ var background = {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 var activeTab = tabs[0]
                 tabUrl = activeTab.url;
-                video_id = tabUrl.split("=");
-                background.sendJSON(video_id[1]);
+                // video_id = tabUrl.split("=");
+                background.sendJSON(tabUrl);
             })
         });
     },
