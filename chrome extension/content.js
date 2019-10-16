@@ -23,4 +23,6 @@ window.addEventListener('load', function () {
     video_title.insertAdjacentHTML("afterbegin", "<button class=\'spotify\' >Add to Spotify</button>");
 
     contentScript.getSongTitleAndArtist(video_title.lastChild.innerHTML)
+
+    console.log("pass")
 })
