@@ -32,7 +32,7 @@ def yt_get_artist_and_track(url):
 def spotify_auth():
     token = util.prompt_for_user_token(
         'mentallyfreetobe@gmail.com', 
-        'user-read-email', 
+        'user-read-email user-library-modify playlist-modify-private playlist-modify-public playlist-read-private playlist-read-collaborative user-library-read', 
         client_id = keys.SPOTIPY_CLIENT_ID, 
         client_secret = keys.SPOTIPY_CLIENT_SECRET,
         redirect_uri = keys.SPOTIPY_REDIRECT_URI
@@ -41,11 +41,23 @@ def spotify_auth():
     sp = spotipy.Spotify(auth=token)
     return sp
 
+def check_track(user, track_id):
+    return user.current_user_saved_tracks_contains(track_id)
+
+def spotify_add_track(user, track_id):
+    if check_track(user, track_id)[0]:
+        print('already saved')
+        return
+    else:
+        user.current_user_saved_tracks_add(track_id)
+        print(check_track(user, track_id)[0])
+
 def spotify_search(user, json_song):
     song = yt_get_artist_and_track(json_song)
     spotify_track_info = user.search(song, limit=1)
     spotify_track_id = spotify_track_info["tracks"]["items"][0]["id"]
     # print(spotify_track_id)
+    spotify_add_track(user, [spotify_track_id])
     return spotify_track_id
 
 if __name__ == '__main__':
