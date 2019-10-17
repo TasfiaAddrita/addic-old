@@ -4,11 +4,14 @@ var background = {
 
     listener: function() {
         chrome.runtime.onMessage.addListener(function (message, sender, response) {
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                var activeTab = tabs[0]
-                tabUrl = activeTab.url;
-                background.sendJSON(tabUrl);
-            })
+            if (message.from == "content") {
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                    var activeTab = tabs[0]
+                    tabUrl = activeTab.url;
+                    background.sendJSON(tabUrl);
+                    // console.log("bg button clicked")
+                })
+            }
         });
     },
 
@@ -31,7 +34,7 @@ var background = {
         xhr.onreadystatechange = function() {
             if(xhr.readyState === 4 && this.status == 200) {
                 receivedContent = JSON.parse(this.responseText)
-                // console.log(receivedContent);
+                console.log(receivedContent);
                 // background.message();
                 
             }
