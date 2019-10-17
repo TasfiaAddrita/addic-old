@@ -1,3 +1,6 @@
-chrome_extension/misc_code.js
 .vscode
+chrome_extension/misc_code.js
+flask/.cache-mentallyfreetobe@gmail.com
+flask/.DS_Store
 flask/keys.py
+flask/misc_code.py

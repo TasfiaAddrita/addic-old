@@ -7,10 +7,12 @@ content = {
             var video_title = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0];
             video_title.insertAdjacentHTML("afterbegin", "<button id=\'spotify\' >Add to Spotify</button>");
             
+            // chrome.runtime.sendMessage({from: 'content', subject: 'spotify-connection'});
+
             var button = document.getElementById('spotify')
             button.addEventListener("click", function() {
                 console.log("button clicked")
-                chrome.runtime.sendMessage({from: 'content'});
+                chrome.runtime.sendMessage({});
             });
         })
         // console.log("content running")
