@@ -25,7 +25,7 @@ Clone repo
 ```git clone "https://github.com/TasfiaAddrita/addic"```
 
 Go to "flask" directory, run these two commands:
-```pipenv install -e Pipfile```
+```pipenv install -e Pipfile```  
 ```python3 app.py```
 
 ## How to deploy
