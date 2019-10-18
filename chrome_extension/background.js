@@ -4,18 +4,22 @@ var background = {
 
     listener: function() {
         chrome.runtime.onMessage.addListener(function (message, sender, response) {
-            // if (message.from == "content" && message.subject == "add-song") {
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                var activeTab = tabs[0]
-                tabUrl = activeTab.url;
-                background.sendJSON('add-song', yt_url=tabUrl);
-                // console.log("bg button clicked")
-            })
-        });
 
-            // if (message.from == "content" && message.subject == "spotify-connection") {
-            //     background.sendJSON('spotify-connection')
-            // }
+            // send request for user auth to app.py
+            if (message.from == "content" && message.subject == "spotify-connection") {
+                background.sendJSON('spotify-connection')
+            }
+
+            // send request to add song to app.py
+            if (message.from == "content" && message.subject == "add-song") {
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                    var activeTab = tabs[0]
+                    tabUrl = activeTab.url;
+                    background.sendJSON('add-song', yt_url=tabUrl);
+                    // console.log("bg button clicked")
+                })
+            }
+        });
     },
 
     message: function() {

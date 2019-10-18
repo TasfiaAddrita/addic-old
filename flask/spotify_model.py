@@ -5,7 +5,7 @@ from youtube_model import YouTube
 import keys
 
 class Spotify():
-    def __init__(self, yt_track_string):
+    def __init__(self, yt_track_string=None):
         self.user = None
         self.yt_track_string = yt_track_string
     
@@ -24,6 +24,9 @@ class Spotify():
 
         self.user = spotipy.Spotify(auth=token)
     
+    def set_track(self, yt_url):
+        self.yt_track_string = yt_url
+
     # search if song is in Spotify's db 
     # if yes, get track id
     # TODO -- if no, return "unavailable"

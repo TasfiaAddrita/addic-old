@@ -6,6 +6,8 @@ from youtube_model import YouTube
 app = Flask(__name__)
 CORS(app)
 
+sp = Spotify()
+
 @app.route('/')
 def index():
     return "hello"
@@ -13,11 +15,16 @@ def index():
 @app.route('/receivejson', methods=["POST"])
 def get_json():
     js_request = request.get_json()
+    if js_request['subject'] == 'spotify-connection':
+        sp.spotify_auth()
+        response = "connected to spotify"
+        
     if js_request['subject'] == 'add-song':
         yt = YouTube(js_request['yt_url'])
         track = yt.get_artist_and_track()
-        sp = Spotify(track)
-        sp.spotify_auth()
+        sp.set_track(track)
+        # sp = Spotify(track)
+        # sp.spotify_auth()
         if sp.check_track():
             response = "song already saved"
         else:
