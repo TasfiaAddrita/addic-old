@@ -21,10 +21,17 @@ Chrome extension that allows you to add music to your Spotify "Liked Songs" list
 - [ ] Offer other streaming services (Apple Music, Google Play, etc.)
 
 ## How to run/setup
-Instructions on the setup process needed for running locally.
+Clone repo 
+```git clone "https://github.com/TasfiaAddrita/addic"```
+
+Go to "flask" directory, run these two commands:
+```pipenv install -e Pipfile```
+```python3 app.py```
 
 ## How to deploy
-How to deploy your own instance live.
+Go to Google Chrome > chrome://extensions > toggle Developer Mode > click "Load unpacked" > navigate to where the addic/chrome_extension folder is in your system and select it 
+
+Open https://www.youtube.com and go to a random song (that's not saved in your Spotify "Liked Songs" list) and press "Add to Spotify" button. If button does not show up or song isn't added, refresh the page a few times. As of now, the song is only added to my (Tasfia) liked songs list, but hopefully that'll be fixed in the near future.
 
 ## Live deployments
 Hopefully in the Chrome Extension Store in the near future!
