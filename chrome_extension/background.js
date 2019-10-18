@@ -46,7 +46,7 @@ var background = {
         xhr.onreadystatechange = function() {
             if(xhr.readyState === 4 && this.status == 200) {
                 receivedContent = JSON.parse(this.responseText)
-                // console.log(receivedContent);
+                console.log(receivedContent);
                 background.message(receivedContent);
             }
         };

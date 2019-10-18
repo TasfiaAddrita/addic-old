@@ -12,6 +12,7 @@ Chrome extension that allows you to add music to your Spotify "Liked Songs" list
 - [x] Add song to user's Spotify "Liked Songs" list
 
 ### Long term goals
+- [ ] Refactor code to use express.js instead of Flask
 - [ ] Show button only in videos that contain music
 - [ ] Check if song in Youtube video is in user's "Liked Songs" list
     - [ ] If it is, give user option to remove it from the list
