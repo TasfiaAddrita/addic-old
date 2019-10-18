@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, url_for, jsonify
 from flask_cors import CORS
+
 from spotify_model import Spotify
 from youtube_model import YouTube
 
@@ -25,11 +26,14 @@ def get_json():
         sp.set_track(track)
         # sp = Spotify(track)
         # sp.spotify_auth()
-        if sp.check_track():
-            response = "song already saved"
-        else:
-            sp.add_track()
-            response = "song added"
+
+        if sp.get_track_id() != []:
+            if sp.check_track_in_user_lib():
+                response = "song already saved"
+            else:
+                sp.add_track()
+                response = "song added"
+        
     return jsonify(response)
 
 if __name__ == '__main__':

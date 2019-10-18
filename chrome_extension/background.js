@@ -5,12 +5,12 @@ var background = {
     listener: function() {
         chrome.runtime.onMessage.addListener(function (message, sender, response) {
 
-            // send request for user auth to app.py
+            // create request for user auth
             if (message.from == "content" && message.subject == "spotify-connection") {
                 background.sendJSON('spotify-connection')
             }
 
-            // send request to add song to app.py
+            // create request to add song
             if (message.from == "content" && message.subject == "add-song") {
                 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                     var activeTab = tabs[0]
@@ -22,13 +22,14 @@ var background = {
         });
     },
 
-    message: function() {
+    message: function(receivedContent) {
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
             // console.log(tabs[0].id)
-            chrome.tabs.sendMessage(tabs[0].id, { from: 'background' });
+            chrome.tabs.sendMessage(tabs[0].id, { from: 'background', subject: receivedContent });
         });
     },
 
+    // send request to app.py
     sendJSON: function(subject, yt_url=null) {
         data = {
             "subject": subject,
@@ -45,9 +46,8 @@ var background = {
         xhr.onreadystatechange = function() {
             if(xhr.readyState === 4 && this.status == 200) {
                 receivedContent = JSON.parse(this.responseText)
-                console.log(receivedContent);
-                background.message();
-                
+                // console.log(receivedContent);
+                background.message(receivedContent);
             }
         };
     }

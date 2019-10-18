@@ -21,8 +21,10 @@ content = {
 
     listener: function() {
         chrome.runtime.onMessage.addListener(function (message, sender, response) {
-            if (message.from == 'background') {
-                // console.log("spotify connection established ", message);
+            if (message.from == 'background' && message.subject == 'song already saved') {
+                // console.log(message.subject);
+                var button = document.getElementById('spotify')
+                button.innerHTML = "Delete from Spotify"
             }
         });
     },
