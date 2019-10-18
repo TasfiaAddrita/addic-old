@@ -40,4 +40,4 @@ Hopefully in the Chrome Extension Store in the near future!
 Reach out to me at tasfia.addrita@gmail.com
 
 ## Resources
-External resources used and needed for this project to be completed. Always cite your peer developers!
+Stack Overflow, Spotify API, spotipy, youtube_dl
