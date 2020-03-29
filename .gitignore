@@ -1,4 +1,6 @@
 .vscode
 chrome_extension/misc_code.js
-flask/.DS_Store
-flask/misc_code.py  
+flask/
+chrome_extension/keys.js
+chrome_extension/node_modules
+chrome_extension/old
