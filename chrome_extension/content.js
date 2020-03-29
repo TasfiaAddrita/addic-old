@@ -1,5 +1,11 @@
 console.log("Chrome Extension ready to go");
 
+window.addEventListener("load", function() {
+  chrome.extension.sendMessage({
+    action: "launchOauth"
+  });
+});
+
 content = {
 
     addButton: function() {
@@ -35,4 +41,4 @@ content = {
     }
 }
 
-content.run()
+// content.run()
