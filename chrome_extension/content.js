@@ -1,10 +1,10 @@
 console.log("Chrome Extension ready to go");
 
-window.addEventListener("load", function() {
-  chrome.extension.sendMessage({
-    action: "launchOauth"
-  });
-});
+// window.addEventListener("load", function() {
+//   chrome.extension.sendMessage({
+//     action: "launchOauth"
+//   });
+// });
 
 content = {
 
