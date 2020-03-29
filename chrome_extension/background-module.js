@@ -53,7 +53,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse){
       function(redirectUrl) {
         // console.log(redirectUrl)
         let code = redirectUrl.slice(redirectUrl.indexOf("=") + 1);
-        // console.log(code)
 
         makeXhrPostRequest(code, "authorization_code")
           .then(data => {
