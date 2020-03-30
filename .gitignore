@@ -4,3 +4,5 @@ flask/
 chrome_extension/keys.js
 chrome_extension/node_modules
 chrome_extension/old
+chrome_extension.crx
+chrome_extension.pem
