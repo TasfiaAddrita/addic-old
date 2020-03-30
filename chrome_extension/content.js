@@ -8,6 +8,24 @@ console.log("Chrome Extension ready to go");
 
 content = {
 
+    checkSpotifyAuth: function() {
+        chrome.storage.local.get(["SPOTIFY_ACCESS_TOKEN"], function(result) {
+            // console.log(result)
+            // console.log(isNaN(result));
+            if (result["SPOTIFY_ACCESS_TOKEN"] === "") {
+              chrome.extension.sendMessage({
+                action: "launchOauth"
+              });
+            } else {
+            //   console.log(result);
+              chrome.extension.sendMessage({
+                action: "getLauvAlbums"
+              });
+            }
+        }
+    );
+},
+
     addButton: function() {
         window.addEventListener('load', function () {
             var video_title = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0];
@@ -36,9 +54,10 @@ content = {
     },
 
     run: function() {
-        content.addButton();
-        content.listener();
+        content.checkSpotifyAuth();
+        // content.addButton();
+        // content.listener();
     }
 }
 
-// content.run()
+content.run()

@@ -4,7 +4,7 @@
   "version": "0.1",
   "content_scripts": [
     {
-      "matches": ["*://*.youtube.com/watch*"],
+      "matches": ["https://shrav.com/"],
       "js": ["content.js"],
       "run_at": "document_end"
     }
@@ -16,5 +16,5 @@
     "default_icon": "logo.png",
     "default_popup": "./dev-popup.html"
   },
-  "permissions": ["tabs", "identity", "*://*.youtube.com/*", "storage"]
+  "permissions": ["tabs", "identity", "storage", "management"]
 }
